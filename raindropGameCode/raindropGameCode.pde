@@ -1,22 +1,25 @@
 //Declare
 PVector mouse;  
-Raindrop r;    
+Raindrop f;
+Bucket d;
 
 void setup() {
   size(1000, 700);
   mouse = new PVector();                
-  r = new Raindrop(random(width), 0, int(random(40,100)));  
+  f = new Raindrop(random(width), 0, int(random(40, 100)));
+  d = new Bucket();
 }
 
 void draw() {
   mouse.set(mouseX, mouseY);             
-  background(0);
-  r.fall();         
-  r.display();      
-  if (r.isInContactWith(mouse)) {      
-    r.reset();                        
+  background(15, 48, 105);
+  f.fall();         
+  f.display();
+  d.display();
+  if (f.isInContactWith(mouse,300)) {      
+    f.reset();
   }
-  if (r.loc.y >= height + r.diam/2) {    
-    r.reset();                           
+  if (f.loc.y >= height + f.diam/2) {    
+    f.reset();
   }
 }
