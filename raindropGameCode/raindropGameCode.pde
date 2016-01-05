@@ -1,4 +1,5 @@
 //Declare  
+ArrayList<Raindrop> particles = new ArrayList<Raindrop>();
 Raindrop f;
 Bucket d;
 PVector mouse;
@@ -6,20 +7,23 @@ PVector mouse;
 void setup() {
   size(1000, 700);   
   mouse = new PVector (mouseX, height-150);
-  f = new Raindrop(random(width), 0, int(random(40, 100)));
+  particles.add(new Raindrop(mouseX, mouseY));
+
   d = new Bucket();
 }
 
 void draw() {      
-   mouse = new PVector (mouseX, height-150);
   background(15, 48, 105);
-  f.fall();         
-  f.display();
-  d.display();
-  if (f.isInContactWith(mouse)) {      
-    f.reset();
+  if (frameCount%15 == 0) {
+    particles.add(new Raindrop(mouseX, mouseY));
   }
-  if (f.rloc.y >= height + f.rdiam/2) {    
-    f.reset();
+  d.display();
+  for (int i = particles.size()-1; i >= 0; i--) {  
+    Raindrop p = particles.get(i);    
+    p.display();                      
+    p.fall();                         
+    if (p.isDead(mouseX, height-50)) {                 
+      particles.remove(i);
+    }
   }
 }

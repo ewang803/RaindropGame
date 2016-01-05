@@ -14,7 +14,7 @@ class Bucket {
 
     fill(255, 215, 94);
     stroke(0, 0, 0);
-    arcbloc.x, loc.y+105, 50, 40, 0, PI);
+    arc(loc.x, loc.y+105, 50, 40, 0, PI);
 
     stroke(255, 162, 0);
 

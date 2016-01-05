@@ -1,9 +1,7 @@
 class Raindrop {
   PVector loc, vel;
-  int diam;
 
-  Raindrop(float x, float y, int tDiam) {
-    diam = tDiam;
+  Raindrop(float x, float y) {
     loc = new PVector(random(width), 0);
     vel = new PVector(0, random(5));
   }
@@ -26,18 +24,19 @@ class Raindrop {
     vel.limit(20);
   }
 
-  boolean isInContactWith(PVector mouse) {
-    if (loc.dist(mouse) <= diam/2-75 || loc.dist(mouse) <= diam/2+75) {
+  boolean isDead(float x, float y) {
+    PVector mouse = new PVector (x, y);
+    if (loc.dist(mouse) <= 50) {
       return true;
     } else return false;
   }
 
-  void reset() {
-    rloc = new PVector(random(width), 0);
-    ellipse(rloc.x, rloc.y, 50, 20);
-    triangle (rloc.x+20, rloc.y, rloc.x+40, rloc.y-10, rloc.x+40, rloc.y+10);
-    ellipse(rloc.x-15, rloc.y-2, 7, 7);
-    ellipse(rloc.x-15, rloc.y-2, 3, 3);
-    rvel = new PVector(0, random(10));
+  void rebirth() {
+   loc = new PVector(random(width), 0);
+    ellipse(loc.x, loc.y, 50, 20);
+    triangle (loc.x+20, loc.y, loc.x+40, loc.y-10, loc.x+40, loc.y+10);
+    ellipse(loc.x-15, loc.y-2, 7, 7);
+    ellipse(loc.x-15, loc.y-2, 3, 3);
+    vel = new PVector(0, random(10));
   }
 }
