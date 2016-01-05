@@ -2,13 +2,13 @@ class Raindrop {
   PVector loc, vel;
 
   Raindrop(float x, float y) {
-    loc = new PVector(random(width), 0);
+    loc = new PVector(random(width-100), 100);
     vel = new PVector(0, random(5));
   }
 
   void display() {
     noStroke();
-    fill(loc.y, random(200)-loc.y, random(200));
+    fill(loc.y, loc.x-loc.y, loc.y-loc.x);
     noStroke();
     ellipse(loc.x, loc.y, 70, 50);
     triangle (loc.x+20, loc.y, loc.x+50, loc.y-20, loc.x+50, loc.y+20);
