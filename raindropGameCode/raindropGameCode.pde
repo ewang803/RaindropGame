@@ -73,7 +73,7 @@ void draw() {
     String title = "YOU WIN!";
     textSize(75);
     text(title, 100, 80, 800, 300);
-    String des = "You have calmed your duck friend. Even though you had to sacrifice some fish, the duck survived, and that's what matters <3 <3 :3 XD Click to try again";
+    String des = "You have calmed your duck friend. Even though you had to sacrifice some fish, the duck survived, and that's what matters <3 <3 :3 XD Click to SAVE MORE DUCKS!";
     textSize(30);
     text(des, 250, 300, 500, 700);
   }
